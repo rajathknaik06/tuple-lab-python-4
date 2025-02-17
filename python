@@ -1,0 +1,35 @@
+""" Alex is tasked with managing the membership lists of several exclusive clubs. Each club has its own list of members, and Alex needs to determine the unique members who are part of exactly one club when considering all clubs together.
+
+
+
+Your goal is to help Alex by writing a program that calculates the symmetric difference of membership lists from multiple clubs and then finds the total number of unique members.
+
+Input format :
+The first line of input consists of an integer k, representing the number of clubs.
+
+The next k lines each contain a space-separated list of integers, where each integer represents a member's ID.
+
+Output format :
+The first line of output displays the symmetric difference of the membership lists as a set.
+
+The second line displays the sum of the elements in this symmetric difference.
+
+"""
+
+# Read the number of sets
+k = int(input())
+
+# Initialize the symmetric difference with the first set
+sets = [set(map(int, input().split())) for _ in range(k)]
+symmetric_diff = sets[0]
+
+# Compute the symmetric difference across all sets
+for s in sets[1:]:
+    symmetric_diff ^= s
+
+# Calculate the sum of the elements in the symmetric difference
+sum_of_diff = sum(symmetric_diff)
+
+# Display the results
+print(symmetric_diff)
+print(sum_of_diff)
